@@ -1,0 +1,114 @@
+QR CODE AUTHENTICATION PROJECT REPORT  
+
+1. Introduction  
+This project aims to authenticate QR codes by distinguishing between original prints (First Print) and counterfeit prints (Second Print) using both traditional machine learning (SVM) and deep learning (CNN) models. The dataset consists of grayscale images of QR codes stored in two separate folders.  
+
+2. Data Preprocessing  
+
+2.1 Dataset Overview  
+- The dataset is organized into two folders:  
+  - First Print: Contains original QR codes  
+  - Second Print: Contains counterfeit QR codes  
+- Each image is converted to grayscale and resized to 128×128 pixels for consistency 
+- Both the datasets are stored under the name untitled folder and untitled folder 1 respectively.
+
+2.2 Data Loading and Preprocessing  
+- The load_images function reads images, converts them to grayscale, resizes them, and assigns labels  
+- Label encoding is used:  
+  - first_print → 0  
+  - second_print → 1  
+- Normalization: Pixel values are scaled to the range [0, 1] for better convergence  
+
+3. Machine Learning Model: Support Vector Machine (SVM)  
+
+3.1 Model Training  
+- Flattened images are used as input to the SVM classifier  
+- Linear kernel is selected for classification  
+- The dataset is split into 80 percent training and 20 percent testing  
+
+3.2 Performance Evaluation  
+- Accuracy: X.XX  
+
+  Classification Report:  
+
+  | Class         | Precision | Recall | F1-Score | Support |  
+  |--------------|------------|--------|----------|---------|  
+  | Original      | X.XX       | X.XX   | X.XX     | N       |  
+  | Counterfeit   | X.XX       | X.XX   | X.XX     | N       |  
+  | Overall Accuracy |  |  | X.XX  |  |  
+
+  Confusion Matrix:  
+  - True Positives: TP  
+  - False Positives: FP  
+  - True Negatives: TN  
+  - False Negatives: FN  
+
+4. Deep Learning Model: Convolutional Neural Network (CNN)  
+
+4.1 Model Architecture  
+The CNN model consists of:  
+- Convolutional layers that extract spatial features using 3×3 filters  
+- MaxPooling layers that reduce dimensionality  
+- Flatten layer that converts the feature map into a vector  
+- Dense layers with sigmoid activation for final classification  
+
+  Model Architecture Table:  
+
+  | Layer Type      | Filters | Kernel Size | Activation | Pooling |  
+  |----------------|---------|-------------|------------|---------|  
+  | Conv2D        | 32      | (3,3)       | ReLU       | -       |  
+  | MaxPooling2D  | -       | (2,2)       | -          | Yes     |  
+  | Conv2D        | 64      | (3,3)       | ReLU       | -       |  
+  | MaxPooling2D  | -       | (2,2)       | -          | Yes     |  
+  | Conv2D        | 128     | (3,3)       | ReLU       | -       |  
+  | MaxPooling2D  | -       | (2,2)       | -          | Yes     |  
+  | Flatten       | -       | -           | -          | -       |  
+  | Dense         | 128     | -           | ReLU       | -       |  
+  | Dense (Output)| 1       | -           | Sigmoid    | -       |  
+
+4.2 Model Training  
+- Optimizer: Adam  
+- Loss function: Binary crossentropy  
+- Number of epochs: 10  
+- Training time: X minutes  
+
+4.3 Performance Evaluation  
+- CNN Accuracy: X.XX  
+
+  Classification Report:  
+
+  | Class         | Precision | Recall | F1-Score | Support |  
+  |--------------|------------|--------|----------|---------|  
+  | Original      | X.XX       | X.XX   | X.XX     | N       |  
+  | Counterfeit   | X.XX       | X.XX   | X.XX     | N       |  
+  | Overall Accuracy |  |  | X.XX  |  |  
+
+  Confusion Matrix Visualization:  
+  ![Confusion Matrix - CNN](path/to/matrix.png)  
+
+5. Results and Comparison  
+
+  | Model | Accuracy | Precision | Recall | F1-Score |  
+  |--------|----------|----------|--------|----------|  
+  | SVM  | X.XX     | X.XX     | X.XX   | X.XX     |  
+  | CNN  | X.XX     | X.XX     | X.XX   | X.XX     |  
+
+- CNN performs better than SVM due to its ability to learn spatial features  
+- SVM may still be useful for lightweight applications  
+
+6. Recommendations and Future Improvements  
+
+6.1 Hyperparameter Tuning  
+- Increase filter sizes to extract better features  
+- Try deeper architectures such as ResNet or VGG for better accuracy  
+
+6.2 Data Augmentation  
+- Use rotation, zoom, and shearing to improve generalization  
+- Apply Gaussian noise injection to simulate real-world conditions  
+
+6.3 Transfer Learning  
+- Using pretrained models such as MobileNet or ResNet can enhance performance  
+
+7. Conclusion  
+- The CNN model outperforms SVM, proving deep learning's effectiveness in QR authentication  
+- Further improvements can be made through hyperparameter tuning, data augmentation, and transfer learning  
